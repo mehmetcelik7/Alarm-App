@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  Alarm App
+
+  Created by mehmet Çelik on 13.03.2025.
+  
+*/
+"alarm" = "alarm";
+"on" = "on";
+"off" = "off";
+"create" = "create";
+"Add Alarm" = "Add Alarm";
+"Alarm List" = "Alarm List";
+"About" = "About";
+"No Alarms" = "No Alarms";
+"to Anton's page" = "to Anton's page";
+"The UI for this nice Alarm app was largely inspired by the amazing work of Anton Leogky." = "The UI for this nice Alarm app was largely inspired by the amazing work of Anton Leogky.";
+"you did it! here you can manage your alarm, change time and other things" = "you did it! here you can manage your alarm, change time and other things";
+"hello there!" = "hello there!";
+"let's add an alarm" = "let's add an alarm";
+"start" = "start";
+"end" = "end";
+"Have a great day!" = "Have a great day!";
+"Activity completed." = "Activity completed.";
+"Enable notifications, please" = "Enable notifications, please";
+"Set the alarm" = "Set the alarm";
+"Sound" = "Sound";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"enable" = "enable";
+
+

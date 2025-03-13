@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainAlarmView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("alarm app")
         }
         .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    MainAlarmView()
 }
