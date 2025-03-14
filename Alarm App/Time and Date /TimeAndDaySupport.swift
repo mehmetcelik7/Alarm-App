@@ -20,6 +20,9 @@ func getTimeComponents(date:Date) ->(hour: Int, minute: Int, day: Int, month: In
 
 }
 
+
+
+
 func dateToPercent(date: Date) ->CGFloat {
     let result = getTimeComponents(date:date)
     

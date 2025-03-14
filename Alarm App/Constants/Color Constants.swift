@@ -8,18 +8,18 @@
 
 import SwiftUI
 
-let blue = Color("blue")
-let pink = Color("pink")
-let purple = Color("purple")
-let yellow = Color("yellow")
-let darkYellow = Color("darkYellow")
-let lightYellow = Color("lightYellow")
+let myBlue = Color("myBlue")
+let myPink = Color("myPink")
+let myPurple = Color("myPurple")
+let myYellow = Color("myYellow")
+let myDarkYellow = Color("myDarkYellow")
+let myLightYellow = Color("myLightYellow")
 let backgroundColor = Color("backgroundColor")
 let cardBackgroundColor = Color("cardBackgroundColor")
-let lightGray = Color("lightGray")
-let black = Color("black")
-let nickel = Color("nickel")
+let myLightGray = Color("myLightGray")
+let myBlack = Color("myBlack")
+let myNickel = Color("myNickel")
 
-let gradColorList = [yellow,pink,purple,blue]
+let gradColorList = [myYellow,myPink,myPurple,myBlue]
 
-let mainColors = [pink, purple, blue, yellow, lightGray, black]
+let mainColors = [myPink, myPurple, myBlue, myYellow, myLightGray, myBlack]
