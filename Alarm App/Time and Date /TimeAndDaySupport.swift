@@ -23,7 +23,6 @@ func addHourToDate(date: Date, numHours: Int, numMinutes: Int) -> Date {
     
 }
 
-
 func getTimeComponents(date:Date) ->(hour: Int, minute: Int, day: Int, month: Int, year: Int) {
     let components = Calendar.current.dateComponents([.hour,.minute,.day,.month,.year], from: date)
     
@@ -37,11 +36,27 @@ func getTimeComponents(date:Date) ->(hour: Int, minute: Int, day: Int, month: In
 
 }
 
-
-
-
 func dateToPercent(date: Date) ->CGFloat {
     let result = getTimeComponents(date:date)
     
     return CGFloat(result.hour) / 24 + CGFloat(result.minute) / (60 * 24)
+}
+
+extension Date {
+    static func - (lhs:Date, rhs:Date) -> TimeInterval {
+        
+        lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+}
+
+func formatDate(date: Date) -> String {
+    
+    let result = getTimeComponents(date: date)
+    return "\(result.day)-\(result.month)-\(result.year)(\(result.hour):\(result.minute))"
+}
+
+func DateToTimeModel(date: Date) -> TimeModel {
+    let result = getTimeComponents(date: date)
+    
+    return TimeModel(hours: result.hour, minutes: result.minute)
 }
