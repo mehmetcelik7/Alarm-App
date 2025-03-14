@@ -7,6 +7,23 @@
 
 import Foundation
 
+
+func getTimeFromDate(date: Date) -> String {
+    let result = getTimeComponents(date: date)
+    let hour = result.hour
+    let minute = result.minute
+    
+    let time =  String(format: "%02d:%02d",hour,minute)
+    return time
+}
+
+func addHourToDate(date: Date, numHours: Int, numMinutes: Int) -> Date {
+    
+    date.addingTimeInterval(TimeInterval(numMinutes * 60 + numHours * 3600))
+    
+}
+
+
 func getTimeComponents(date:Date) ->(hour: Int, minute: Int, day: Int, month: Int, year: Int) {
     let components = Calendar.current.dateComponents([.hour,.minute,.day,.month,.year], from: date)
     
