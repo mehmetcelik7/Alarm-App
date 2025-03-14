@@ -23,7 +23,7 @@ struct SplashScreenView: View {
                     VStack(alignment: .leading, spacing: 0) {
                         CoolTextView(text: "99 like icardi", size: fontSize)
                         CoolTextView(text: "let's add an alarm", size: fontSize)
-                      
+                        Spacer()
                             
                     }
                     .multilineTextAlignment(.leading)
@@ -38,7 +38,23 @@ struct SplashScreenView: View {
                 
                 Spacer()
                 
-                Text("99 like icardi")
+                Image(welcome)
+                    .resizable()
+                    .scaledToFit()
+                    .opacity(0.7)
+                Spacer()
+            }
+            .opacity(opacity)
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    
+                }
+                
+            }
+            .onTapGesture {
+                withAnimation {
+                    isACtive = true
+                }
             }
             
         }
