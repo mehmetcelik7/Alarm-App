@@ -12,7 +12,8 @@ struct ToBedWakeUpView: View {
     @State var alarmModel: AlarmModel
     var body: some View {
         VStack {
-            Text("99 like icardi")
+           
+            CancelSaveAlarm(currentAlarmIndex: currentAlarmIndex, alarmModel: $alarmModel)
             
             Text("Toggle Alarm")
             

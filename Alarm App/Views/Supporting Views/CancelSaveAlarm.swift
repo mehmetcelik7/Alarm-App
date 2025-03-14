@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct CancelSaveAlarm: View {
+    let currentAlarmIndex: Int?
+    @Binding var alarmModel: AlarmModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+           
+            Button(action: {
+                print("Cancel")
+            }, label: {
+                Text("Cancel")
+            })
+            Spacer()
+            
+             Button(action: {
+                 print("save")
+                 if let currentAlarmIndex = currentAlarmIndex {
+                     //TODO: edit alarm to view
+                     
+                     print("\(currentAlarmIndex)")
+                 }else{
+                     //TODO: Append alarm to viw mode
+                     
+                 }
+             }, label: {
+                 Text("Save")
+             })
+        }
     }
 }
 
 #Preview {
-    CancelSaveAlarm()
+    CancelSaveAlarm(currentAlarmIndex: nil, alarmModel: .constant(.DefaultAlarm()))
 }
