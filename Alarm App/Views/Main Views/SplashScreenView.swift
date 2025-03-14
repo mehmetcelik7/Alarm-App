@@ -8,8 +8,39 @@
 import SwiftUI
 
 struct SplashScreenView: View {
+    @State private var isACtive: Bool = true
+    @State private var opacity = 0.3
+    @State private var fontSize = 12.0
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if isACtive {
+            MainAlarmView()
+        }else {
+            ZStack {
+                FourCoolCircles(color1: myBlue, color2: .clear)
+                
+                VStack {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("99 like icardi")
+                        Text("let's add an alarm")
+                            
+                    }
+                    .multilineTextAlignment(.leading)
+                    .padding()
+                    .onAppear{
+                        withAnimation(.easeInOut(duration: 1.5)) {
+                            opacity = 1.0
+                            fontSize = 36.0
+                        }
+                    }
+                }
+                
+                Spacer()
+                
+                Text("99 like icardi")
+            }
+            
+        }
     }
 }
 
