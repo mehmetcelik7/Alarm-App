@@ -21,8 +21,9 @@ struct SplashScreenView: View {
                 
                 VStack {
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("99 like icardi")
-                        Text("let's add an alarm")
+                        CoolTextView(text: "99 like icardi", size: fontSize)
+                        CoolTextView(text: "let's add an alarm", size: fontSize)
+                      
                             
                     }
                     .multilineTextAlignment(.leading)
