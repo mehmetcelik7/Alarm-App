@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SplashScreenView: View {
-    @State private var isACtive: Bool = true
+    @State private var isACtive: Bool = false
     @State private var opacity = 0.3
     @State private var fontSize = 12.0
     
@@ -17,7 +17,7 @@ struct SplashScreenView: View {
             MainAlarmView()
         }else {
             ZStack {
-                FourCoolCircles(color1: myBlue, color2: .clear)
+                FourCoolCircles(color1: .red, color2: myYellow)
                 
                 VStack {
                     VStack(alignment: .leading, spacing: 0) {
