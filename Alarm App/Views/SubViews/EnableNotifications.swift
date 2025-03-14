@@ -20,7 +20,9 @@ struct EnableNotifications: View {
                 Button(action: {
                     print("TODO: like icardi")
                 }, label: {
-                    Text("enable")
+                 
+                    ButtonView(text: "enable")
+                        .padding()
                 })
             }
         }
