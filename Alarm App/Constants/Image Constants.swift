@@ -10,3 +10,5 @@ import Foundation
 
 
 let welcome = "welcome"
+let AppImageSamples = "AppImageSamples"
+let partPerson = "undraw_Beach_day_cser"
