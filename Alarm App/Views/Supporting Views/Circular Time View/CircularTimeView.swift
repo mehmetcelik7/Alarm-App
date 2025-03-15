@@ -49,6 +49,8 @@ struct CircularTimeView: View {
                 rotateCircleOffset: rotateCircleOffset,
                 color: .black)
             //Progressioon gray ticks
+            DisplayIconOnCircularTimeView(time: startTime, size: size, percent: startDateToPercent)
+            DisplayIconOnCircularTimeView(time: endTime, size: size, percent: endDateToPercent)
         }
     }
 }
@@ -58,9 +60,6 @@ struct CircularTimeView: View {
    
     VStack(spacing: 50){
         CircularTimeView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm(), size: screenWidth / 2)
-        //            CircularTimeView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm(), size: screenWidth / 4)
-        //            CircularTimeView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm(), size: screenWidth / 0.75)
-        //        }
-        
+            
     }
 }
