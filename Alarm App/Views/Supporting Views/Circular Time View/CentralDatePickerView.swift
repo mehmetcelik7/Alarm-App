@@ -11,9 +11,11 @@ struct CentralDatePickerView: View {
     let size: CGFloat
     @Binding var alarmModel: AlarmModel
     var lineWidth : CGFloat = 10.0
+  
+
     var body: some View {
         Circle()
-            .stroke(myLightGray,lineWidth: lineWidth)
+            .stroke(.black.opacity(0.2),lineWidth: lineWidth)
             .frame(width: size,height: size)
             .overlay(
                 VStack{

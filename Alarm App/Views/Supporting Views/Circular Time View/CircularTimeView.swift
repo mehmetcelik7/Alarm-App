@@ -14,14 +14,42 @@ struct CircularTimeView: View {
     @State var alarmModel: AlarmModel
     
     let size: CGFloat
+    var endTime: Date {
+        alarmModel.end
+    }
+    var startTime: Date {
+        alarmModel.start
+    }
+    var percentDifference: CGFloat {
+        let value = dateToPercent(date: endTime) - dateToPercent(date: startTime)
+
+        return value >= 0 ? value : 1 + value
+    }
+    
+    var startDateToPercent: CGFloat {
+        dateToPercent(date: startTime)
+    }
+    var endDateToPercent: CGFloat {
+        startDateToPercent + percentDifference
+        
+    }
+    
+    var rotateCircleOffset: CGFloat {
+         360 * startDateToPercent
+    }
     
     var body: some View {
-        Circle()
-            .stroke(lineWidth: 20)
-            .frame(width: size)
-            .overlay(
-                Text("Circular Alarm")
-            )
+        ZStack {
+            CentralDatePickerView(size: size, alarmModel: $alarmModel)
+            
+            TimeArcView(
+                percentDifference: percentDifference,
+                strokeStyle: StrokeStyle(lineWidth: 15,dash: [5,2]),
+                size: size,
+                rotateCircleOffset: rotateCircleOffset,
+                color: .black)
+            //Progressioon gray ticks
+        }
     }
 }
 
