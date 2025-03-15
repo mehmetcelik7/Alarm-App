@@ -11,6 +11,7 @@ struct AlarmRowView: View {
     let model : AlarmModel
     let i: Int
     var body: some View {
+        
         HStack {
             Image(systemName: model.activity)
                 .foregroundColor(model.activityColor)

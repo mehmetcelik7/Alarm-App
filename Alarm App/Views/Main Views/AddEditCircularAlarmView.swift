@@ -18,9 +18,11 @@ struct AddEditCircularAlarmView: View {
             AlarmToggleView(alarmEnabled: $alarmModel.alarmEnabled)
             
             Divider()
+            
             Spacer()
             CircularTimeView(currentAlarmIndex: currentAlarmIndex, alarmModel: alarmModel, size: screenWidth / 2)
             Spacer()
+            SelectActivityViewExpanded(currentColorIndex: $alarmModel.colorIndex, currentActivity: $alarmModel.activity)
         }
         .padding()
     }
