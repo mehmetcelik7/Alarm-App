@@ -10,6 +10,7 @@ import SwiftUI
 struct ToBedWakeUpView: View {
     let currentAlarmIndex: Int?
     @State var alarmModel: AlarmModel
+    
     var body: some View {
         VStack {
            
@@ -45,7 +46,7 @@ struct ToBedWakeUpView: View {
                             .foregroundColor(alarmModel.activityColor)
                             .font(.headline)
                         
-                        Text("SelectActivityView")
+                        SelectActivityView(currentColorIndex: $alarmModel.colorIndex, currentActivity: $alarmModel.activity)
                           
                     }
                     .padding(.vertical)
@@ -58,7 +59,7 @@ struct ToBedWakeUpView: View {
                         }
                     }
                     GridRow {
-                        TimeOfDayIcon(date: alarmModel.start)
+                        TimeOfDayIcon(date: alarmModel.end)
                             .font(.largeTitle)
                         VStack(alignment: .leading) {
                             TimePicker(time: $alarmModel.end, scale: 1.3)
