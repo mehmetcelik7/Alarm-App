@@ -12,39 +12,44 @@ struct ListOfTheAlarmsView: View {
     var body: some View {
       
         NavigationStack {
-            List {
-                ForEach(0..<alarmViewModels.count, id: \.self
-                ) { i in
-                    let alarmModel = alarmViewModels[i]
-                    NavigationLink(destination: {
-                        Text("Data for alarm \(i)")
-                    }, label: {
-                        HStack {
-                            Image(systemName: alarmModel.activity)
-                                .foregroundColor(alarmModel.activityColor)
-                            Text("Alarm Row View-edit me")
-                        }
-                    })
+            ZStack {
+                List {
+                    ForEach(0..<alarmViewModels.count, id: \.self
+                    ) { i in
+                        let alarmModel = alarmViewModels[i]
+                        NavigationLink(destination: {
+                            
+                            AddEditAlarmView(currentAlarmIndex: i, alarmModel: alarmModel)
+                        }, label: {
+                           
+                                AlarmRowView(model: alarmModel, i: i)
+                            
+                        })
+                    }
                 }
+                FourCoolCircles()
+                    .opacity(0.3)
+             
             }
             .navigationTitle("Alarm List")
-            .toolbar{
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: {
-                        Text("Create new alarm")
-                    }, label: {
-                        Text("+")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                            .foregroundColor(myBlack)
-                    })
+                .toolbar{
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: {
+                            
+                            AddEditAlarmView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm())
+                        }, label: {
+                            Text("+")
+                                .font(.largeTitle)
+                                .fontWeight(.semibold)
+                                .foregroundColor(myBlack)
+                        })
+                        
+                    }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EditButton()
+                    }
                     
-                   }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
                 }
-
-            }
         }
     }
 }
