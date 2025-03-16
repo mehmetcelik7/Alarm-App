@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct AlarmModel: Identifiable, Codable {
-    let id = UUID().uuidString
+    var id = UUID().uuidString
     
     let title: String
     let body: String
