@@ -24,7 +24,8 @@ struct ChooseAlarmView: View {
                 
                 AddEditAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: lnManager.alarmViewModels[currentAlarmIndex])
             }else{
-                Text("Use Circular view")
+              
+                AddEditCircularAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: lnManager.alarmViewModels[currentAlarmIndex])
             }
            
 
@@ -32,7 +33,7 @@ struct ChooseAlarmView: View {
             if addEditViewType == .standart {
                 AddEditAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: .DefaultAlarm())
             }else{
-                Text("Use Circular view")
+                AddEditCircularAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: .DefaultAlarm())
             }
             
           

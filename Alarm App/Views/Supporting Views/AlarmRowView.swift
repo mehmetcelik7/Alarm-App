@@ -21,7 +21,8 @@ struct AlarmRowView: View {
             Image(systemName: model.activity)
                 .foregroundColor(model.activityColor)
                 .font(.title)
-            
+            Spacer()
+
            
                 Text("\(getTimeFromDate(date: model.start))-\(getTimeFromDate(date: model.end))")
                     .font(.title)
