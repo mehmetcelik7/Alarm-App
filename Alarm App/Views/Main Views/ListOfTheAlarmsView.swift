@@ -13,7 +13,8 @@ struct ListOfTheAlarmsView: View {
     @EnvironmentObject var lnManager: LocalNotificationManager
     @State var isActive = false
     @State var currentIndex : Int? = nil
-    
+//    @State var addEditViewType: AddEditViewType = .standart
+    @State var addEditViewType: AddEditViewType = .circular
     
     var body: some View {
       
@@ -42,7 +43,7 @@ struct ListOfTheAlarmsView: View {
             .sheet(isPresented: $isActive,onDismiss: {}) {
                 
                 
-                wrapAddEditAlarmView(currentAlarmIndex: $currentIndex)
+                ChooseAlarmView(currentAlarmIndex: $currentIndex, addEditViewType: addEditViewType)
             }
                 .toolbar{
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -80,21 +81,6 @@ struct ListOfTheAlarmsView: View {
     }
 }
 
-struct wrapAddEditAlarmView: View {
-    @EnvironmentObject var lnManager: LocalNotificationManager
-    @Binding var currentAlarmIndex: Int?
-    var body: some View {
-       
-        if let  currentAlarmIndex = currentAlarmIndex {
-            AddEditAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: lnManager.alarmViewModels[currentAlarmIndex])
-
-        }else{
-            AddEditAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: .DefaultAlarm())
-
-        }
-       
-    }
-}
 
 #Preview {
     ListOfTheAlarmsView()
