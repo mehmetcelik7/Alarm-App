@@ -16,7 +16,7 @@ struct MainAlarmView: View {
         TabView {
 
             if lnManager.isAuthorized {
-                ListOfTheAlarmsView(alarmViewModels: AlarmModel.DummyAlarmData())
+              ListOfTheAlarmsView()
                     .tabItem( {
                         Label("Alarms", systemImage: "alarm.fill")
                     })
@@ -48,4 +48,5 @@ struct MainAlarmView: View {
 
 #Preview {
     MainAlarmView()
+        .environmentObject(LocalNotificationManager())
 }

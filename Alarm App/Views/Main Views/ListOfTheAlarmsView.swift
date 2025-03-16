@@ -8,24 +8,31 @@
 import SwiftUI
 
 struct ListOfTheAlarmsView: View {
-    var alarmViewModels: [AlarmModel]
+//    var alarmViewModels: [AlarmModel]
+    
+    @EnvironmentObject var lnManager: LocalNotificationManager
+    @State var isActive = false
+    @State var currentIndex : Int? = nil
+    
+    
     var body: some View {
       
         NavigationStack {
             ZStack {
                 List {
-                    ForEach(0..<alarmViewModels.count, id: \.self
+                    ForEach(lnManager.alarmViewModels.indices, id: \.self
                     ) { i in
-                        let alarmModel = alarmViewModels[i]
-                        NavigationLink(destination: {
-                            
-                            MainAddEditAlarmView(currentAlarmIndex:i , alarmModel: alarmModel)
+                       
+                        Button(action: {
+                            currentIndex = i
+                            isActive.toggle()
                         }, label: {
-                           
-                                AlarmRowView(model: alarmModel, i: i)
-                            
+                            AlarmRowView(model: lnManager.alarmViewModels[i], i: i)
+                                .padding(.vertical)
                         })
+                       
                     }
+                    .onDelete(perform: deleteMe)
                 }
                 FourCoolCircles()
                     .opacity(0.3)
@@ -52,8 +59,19 @@ struct ListOfTheAlarmsView: View {
                 }
         }
     }
+    func deleteMe(ofsetts: IndexSet)  {
+        for index in ofsetts {
+            //TODO: suiside
+            print("Remove request from \(lnManager.alarmViewModels[index].id)")
+        }
+        
+        lnManager.alarmViewModels.remove(atOffsets: ofsetts)
+        
+    }
 }
 
+
 #Preview {
-    ListOfTheAlarmsView(alarmViewModels: AlarmModel.DummyAlarmData())
+    ListOfTheAlarmsView()
+        .environmentObject(LocalNotificationManager())
 }

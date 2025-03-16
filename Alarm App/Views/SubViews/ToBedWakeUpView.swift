@@ -93,5 +93,12 @@ struct ToBedWakeUpView: View {
 }
 
 #Preview {
-    ToBedWakeUpView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm())
+    ZStack {
+        
+        Color
+            .gray
+            .opacity(0.3)
+            .ignoresSafeArea()
+        ToBedWakeUpView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm())
+    }
 }
