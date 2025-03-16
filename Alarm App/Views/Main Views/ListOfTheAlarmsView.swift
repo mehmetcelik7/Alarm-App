@@ -40,7 +40,9 @@ struct ListOfTheAlarmsView: View {
             }
             .navigationTitle("Alarm List")
             .sheet(isPresented: $isActive,onDismiss: {}) {
-                AddEditAlarmView(currentAlarmIndex: currentIndex)
+                
+                
+                wrapAddEditAlarmView(currentAlarmIndex: $currentIndex)
             }
                 .toolbar{
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -74,6 +76,13 @@ struct ListOfTheAlarmsView: View {
     }
 }
 
+struct wrapAddEditAlarmView: View {
+    
+    @Binding var currentAlarmIndex: Int?
+    var body: some View {
+        AddEditAlarmView(currentAlarmIndex: currentAlarmIndex)
+    }
+}
 
 #Preview {
     ListOfTheAlarmsView()
