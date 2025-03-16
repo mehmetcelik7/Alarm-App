@@ -99,6 +99,6 @@ struct ToBedWakeUpView: View {
             .gray
             .opacity(0.3)
             .ignoresSafeArea()
-        ToBedWakeUpView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm())
+        ToBedWakeUpView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm()).environmentObject(LocalNotificationManager())
     }
 }

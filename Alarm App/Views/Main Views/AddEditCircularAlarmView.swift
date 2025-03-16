@@ -4,7 +4,6 @@
 //
 //  Created by mehmet Çelik on 15.03.2025.
 //
-
 import SwiftUI
 
 struct AddEditCircularAlarmView: View {
@@ -20,14 +19,19 @@ struct AddEditCircularAlarmView: View {
             Divider()
             
             Spacer()
-            CircularTimeView(currentAlarmIndex: currentAlarmIndex, alarmModel: alarmModel, size: screenWidth / 2)
+                        
+            CircularTimeView(currentAlarmIndex: currentAlarmIndex, alarmModel: $alarmModel, size: screenWidth / 2)
+            
             Spacer()
+            
             SelectActivityViewExpanded(currentColorIndex: $alarmModel.colorIndex, currentActivity: $alarmModel.activity)
-        }
-        .padding()
+            
+        }.padding()
     }
 }
 
+
 #Preview {
     AddEditCircularAlarmView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm())
+        .environmentObject(LocalNotificationManager())
 }

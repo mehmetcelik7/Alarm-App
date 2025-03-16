@@ -31,6 +31,6 @@ struct DisplayIconOnCircularTimeView: View {
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
-        DisplayIconOnCircularTimeView(time: Date(), size: 200, percent: 0.5)
+        DisplayIconOnCircularTimeView(time: Date(), size: 200, percent: 0.5).environmentObject(LocalNotificationManager())
     }
 }

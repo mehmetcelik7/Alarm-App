@@ -46,15 +46,19 @@ struct ListOfTheAlarmsView: View {
             }
                 .toolbar{
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: {
-            
-                            MainAddEditAlarmView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm())
+                        
+                        Button(action: {
+                          
+                            isActive.toggle()
                         }, label: {
                             Text("+")
                                 .font(.largeTitle)
                                 .fontWeight(.semibold)
                                 .foregroundColor(myBlack)
+                            
                         })
+                        
+               
                         
                     }
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -77,10 +81,18 @@ struct ListOfTheAlarmsView: View {
 }
 
 struct wrapAddEditAlarmView: View {
-    
+    @EnvironmentObject var lnManager: LocalNotificationManager
     @Binding var currentAlarmIndex: Int?
     var body: some View {
-        AddEditAlarmView(currentAlarmIndex: currentAlarmIndex)
+       
+        if let  currentAlarmIndex = currentAlarmIndex {
+            AddEditAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: lnManager.alarmViewModels[currentAlarmIndex])
+
+        }else{
+            AddEditAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: .DefaultAlarm())
+
+        }
+       
     }
 }
 

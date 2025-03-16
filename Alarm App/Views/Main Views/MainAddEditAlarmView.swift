@@ -13,7 +13,7 @@ struct MainAddEditAlarmView: View {
     @State private var selectedTab = "One"
     var body: some View {
         TabView(selection: $selectedTab) {
-            AddEditAlarmView(currentAlarmIndex: currentAlarmIndex)
+            AddEditAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: alarmModel)
                 .tag("One")
                 
             AddEditCircularAlarmView(currentAlarmIndex: currentAlarmIndex, alarmModel: alarmModel)
@@ -33,4 +33,5 @@ struct MainAddEditAlarmView: View {
 
 #Preview {
     MainAddEditAlarmView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm())
+      
 }

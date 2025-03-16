@@ -90,5 +90,5 @@ struct FourCoolCircles: View {
 }
 
 #Preview {
-    FourCoolCircles()
+    FourCoolCircles().environmentObject(LocalNotificationManager())
 }

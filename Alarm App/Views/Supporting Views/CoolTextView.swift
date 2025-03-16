@@ -22,5 +22,5 @@ struct CoolTextView: View {
 }
 
 #Preview {
-    CoolTextView(text: "set alarm \n wake up like icardi", size: 36)
+    CoolTextView(text: "set alarm \n wake up like icardi", size: 36).environmentObject(LocalNotificationManager())
 }

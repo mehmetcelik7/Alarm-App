@@ -31,5 +31,5 @@ struct TimeArcView: View {
         size: 200,
         rotateCircleOffset: 30,
         color: myBlack
-    )
+    ).environmentObject(LocalNotificationManager())
 }

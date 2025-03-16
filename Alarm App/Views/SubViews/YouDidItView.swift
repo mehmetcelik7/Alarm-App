@@ -43,6 +43,6 @@ struct YouDidItView: View {
 #Preview {
     ZStack {
         myBlack.ignoresSafeArea()
-        YouDidItView()
+        YouDidItView().environmentObject(LocalNotificationManager())
     }
 }

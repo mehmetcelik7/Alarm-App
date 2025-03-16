@@ -22,8 +22,8 @@ struct AlarmToggleView: View {
 
 #Preview {
     VStack {
-        AlarmToggleView(alarmEnabled: .constant(true))
+        AlarmToggleView(alarmEnabled: .constant(true)).environmentObject(LocalNotificationManager())
 
-        AlarmToggleView(alarmEnabled: .constant(true))
+        AlarmToggleView(alarmEnabled: .constant(true)).environmentObject(LocalNotificationManager())
     }
 }

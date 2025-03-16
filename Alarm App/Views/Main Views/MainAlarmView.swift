@@ -31,15 +31,15 @@ struct MainAlarmView: View {
             
         }
         .ignoresSafeArea()
-        task {
+        .task {
             try? await lnManager.requestAuthorization()
         }
-        .onChange(of: scenePhase) {  newValue in
+        .onChange(of: scenePhase) { _, newValue in
             if newValue == .active {
                 Task {
+                    
                     await lnManager.getCurrentSettings()
-                    await lnManager
-                        .getPendingAlarms()
+                    await lnManager.getPendingAlarms()
                 }
             }
         }
@@ -48,5 +48,4 @@ struct MainAlarmView: View {
 
 #Preview {
     MainAlarmView()
-        .environmentObject(LocalNotificationManager())
 }

@@ -41,5 +41,5 @@ struct CentralDatePickerView: View {
 }
 
 #Preview {
-    CentralDatePickerView(size: 200, alarmModel: .constant(AlarmModel.DefaultAlarm()))
+    CentralDatePickerView(size: 200, alarmModel: .constant(AlarmModel.DefaultAlarm())).environmentObject(LocalNotificationManager())
 }
