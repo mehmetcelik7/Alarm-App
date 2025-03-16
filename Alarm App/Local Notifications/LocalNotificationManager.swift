@@ -82,6 +82,14 @@ class LocalNotificationManager:NSObject,ObservableObject,UNUserNotificationCente
         content
             .sound = customSound(soundName: localNotification.sound)
         
+        let dateComponents = localNotification.endDateComponents
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: localNotification.repeats)
+        
+        let request = UNNotificationRequest(identifier: localNotification.id, content: content, trigger: trigger)
+        
+        try? await notificationCenter.add(request)
+        
+        pendingAlarms = await notificationCenter.pendingNotificationRequests()
     }
     func customSound(soundName: Sounds,fileExtension: String = "") -> UNNotificationSound? {
         
@@ -90,6 +98,17 @@ class LocalNotificationManager:NSObject,ObservableObject,UNUserNotificationCente
      
         return UNNotificationSound(named: UNNotificationSoundName(rawValue: filename))
     }
+    
+    func removeRequest(id: String) {
+        notificationCenter
+            .removeDeliveredNotifications(withIdentifiers: [id])
+        
+        if let index = pendingAlarms.firstIndex(where: { $0.identifier == id }) {
+            pendingAlarms.remove(at: index)
+        }
+    }
+    
+
     
 }
 
