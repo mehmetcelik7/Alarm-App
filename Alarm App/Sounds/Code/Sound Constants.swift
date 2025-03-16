@@ -8,7 +8,6 @@
 import Foundation
 
 enum Sounds: String, CaseIterable, Codable {
-    
     // Ringtone Sounds
     case wake_up = "Sound Wake up.aiff"
     case lagrima = "Lagrima.aiff"
@@ -32,15 +31,6 @@ enum Sounds: String, CaseIterable, Codable {
     case soft_rain_ambient = "soft rain ambient.mp3"
     case the_beat_of_nature = "the beat of nature.mp3"
     case waterfall = "waterfall.mp3"
-
-    
-    
-    
-    func formatSoundName() -> String {
-        String(describing: self)
-            .replacingOccurrences(of: "_", with: " ")
-            .capitalized
-    }
 }
 
 let ringToneSoundsList: [Sounds] = [
@@ -67,6 +57,20 @@ let natureSoundsList: [Sounds] = [
     .soft_rain_ambient,
     .the_beat_of_nature,
     .waterfall
-
-    
 ]
+
+extension String {
+    var formatSoundName: String {
+        var result = String(describing: self)
+            .replacingOccurrences(of: "_", with: " ")
+            .capitalized
+        
+        let periodIndex = result.firstIndex(of: ".")
+        
+        if let periodIndex: Index = periodIndex {
+            result.removeSubrange(periodIndex...)
+        }
+        
+        return result
+    }
+}
