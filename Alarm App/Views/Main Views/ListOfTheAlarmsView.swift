@@ -13,24 +13,29 @@ struct ListOfTheAlarmsView: View {
     @EnvironmentObject var lnManager: LocalNotificationManager
     @State var isActive = false
     @State var currentIndex : Int?
-//    @State var addEditViewType: AddEditViewType = .standart
-    @State var addEditViewType: AddEditViewType = .circular
+    @State var addEditViewType: AddEditViewType = .standart
+//    @State var addEditViewType: AddEditViewType = .circular
     
     var body: some View {
       
         NavigationStack {
             ZStack {
-                List {
-                    ForEach(lnManager.alarmViewModels.indices, id: \.self
-                    ) { i in
-                       
-                        
-                        AlarmRowViewButton(model: lnManager.alarmViewModels[i], i: i,currentIndex: $currentIndex, isActive: $isActive)
-                            .padding(.vertical)
-                       
+                VStack {
+                    List {
+                        ForEach(lnManager.alarmViewModels.indices, id: \.self
+                        ) { i in
+                            
+                            
+                            AlarmRowViewButton(model: lnManager.alarmViewModels[i], i: i,currentIndex: $currentIndex, isActive: $isActive)
+                                .padding(.vertical)
+                            
+                        }
+                        .onDelete(perform: deleteMe)
                     }
-                    .onDelete(perform: deleteMe)
+                    SelectView(width: 50, addEditViewType: $addEditViewType, isActive: $isActive)
+                    Text("99 like icardi")
                 }
+                
                 FourCoolCircles()
                     .opacity(0.3)
              

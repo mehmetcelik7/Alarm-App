@@ -12,3 +12,6 @@ import Foundation
 let welcome = "welcome"
 let AppImageSamples = "AppImageSamples"
 let partPerson = "undraw_Beach_day_cser"
+let circularViewImage = "CircularViewImage"
+let standartViewImage = "StandardViewImage"
+
