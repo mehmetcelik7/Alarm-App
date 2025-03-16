@@ -18,7 +18,7 @@ class LocalNotificationManager:NSObject,ObservableObject,UNUserNotificationCente
     
     @Published var alarmViewModels: [AlarmModel] = [] {
         didSet {
-//            saveItem()
+            saveItems()
         }
     }
     
@@ -61,7 +61,8 @@ class LocalNotificationManager:NSObject,ObservableObject,UNUserNotificationCente
     
     override init() {
         super.init()
-        
+        notificationCenter.delegate = self
+
         guard let data = UserDefaults.standard.data(forKey: itemKey),
                 let savedItems = try? JSONDecoder().decode([AlarmModel].self, from: data)
         else {
@@ -109,6 +110,19 @@ class LocalNotificationManager:NSObject,ObservableObject,UNUserNotificationCente
     }
     
 
+    func safeAppend(localNotification: AlarmModel) {
+        if let index = alarmViewModels.firstIndex(where: {$0.id == localNotification.id}) {
+            print("Alarm already exists so do not append...")
+            print("Update the alarm")
+            
+            alarmViewModels[index] = localNotification
+        }else {
+            alarmViewModels.append(localNotification)
+        }
+        
+        alarmViewModels = alarmViewModels.sorted (by: { $0.endTime < $1.endTime })
+           
+    }
     
 }
 

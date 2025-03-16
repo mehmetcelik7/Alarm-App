@@ -39,6 +39,9 @@ struct ListOfTheAlarmsView: View {
              
             }
             .navigationTitle("Alarm List")
+            .sheet(isPresented: $isActive,onDismiss: {}) {
+                AddEditAlarmView(currentAlarmIndex: currentIndex)
+            }
                 .toolbar{
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: {
@@ -61,8 +64,9 @@ struct ListOfTheAlarmsView: View {
     }
     func deleteMe(ofsetts: IndexSet)  {
         for index in ofsetts {
-            //TODO: suiside
+           
             print("Remove request from \(lnManager.alarmViewModels[index].id)")
+            lnManager.removeRequest(id: lnManager.alarmViewModels[index].id)
         }
         
         lnManager.alarmViewModels.remove(atOffsets: ofsetts)

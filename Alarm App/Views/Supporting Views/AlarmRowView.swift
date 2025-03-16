@@ -39,10 +39,15 @@ struct AlarmRowView: View {
         .onChange(of: model.alarmEnabled) { alarmEnabled in
             if alarmEnabled {
                 print("Enable alarm")
-                //TODO: like icardi enable alarm
+                Task {
+                    await  lnManager
+                        .schedule(localNotification: model)
+                }
+               
             }else{
                 print("Disable alarm")
-                //TODO: Disable alarm
+                lnManager.removeRequest(id: model.id)
+               
             }
         }
     }
