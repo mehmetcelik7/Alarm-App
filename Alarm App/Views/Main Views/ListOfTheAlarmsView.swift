@@ -12,7 +12,7 @@ struct ListOfTheAlarmsView: View {
     
     @EnvironmentObject var lnManager: LocalNotificationManager
     @State var isActive = false
-    @State var currentIndex : Int? = nil
+    @State var currentIndex : Int?
 //    @State var addEditViewType: AddEditViewType = .standart
     @State var addEditViewType: AddEditViewType = .circular
     
@@ -24,13 +24,9 @@ struct ListOfTheAlarmsView: View {
                     ForEach(lnManager.alarmViewModels.indices, id: \.self
                     ) { i in
                        
-                        Button(action: {
-                            currentIndex = i
-                            isActive.toggle()
-                        }, label: {
-                            AlarmRowView(model: lnManager.alarmViewModels[i], i: i)
-                                .padding(.vertical)
-                        })
+                        
+                        AlarmRowViewButton(model: lnManager.alarmViewModels[i], i: i,currentIndex: $currentIndex, isActive: $isActive)
+                            .padding(.vertical)
                        
                     }
                     .onDelete(perform: deleteMe)
