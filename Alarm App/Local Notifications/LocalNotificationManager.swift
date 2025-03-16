@@ -71,6 +71,20 @@ class LocalNotificationManager:NSObject,ObservableObject,UNUserNotificationCente
         }
         self.alarmViewModels = savedItems
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
+        
+        let notificationId = notification.request.identifier
+        
+        if let index = alarmViewModels.firstIndex(where: {$0.id == notificationId}) {
+            alarmViewModels[index].alarmEnabled = false
+        }
+        
+        pendingAlarms = await notificationCenter.pendingNotificationRequests()
+        
+        return [.sound,.banner]
+    }
+    
     func getPendingAlarms() async {
         pendingAlarms = await notificationCenter
             .pendingNotificationRequests()
